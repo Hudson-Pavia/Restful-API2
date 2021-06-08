@@ -1,0 +1,25 @@
+{
+  "name": "restful-api2",
+  "version": "1.0.0",
+  "description": "Building another Node.js API with Express.js and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hudson-Pavia/Restful-API2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hudson-Pavia/Restful-API2/issues"
+  },
+  "homepage": "https://github.com/Hudson-Pavia/Restful-API2#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
