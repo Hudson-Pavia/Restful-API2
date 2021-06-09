@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const app = express(); //execute express, easy routes
 const port = 3000;
 require("dotenv/config"); //for the .env file that helps us keep the password out of the code
+app.use(express.json());
 //Import Routes
 const homeRoute = require("./routes/home"); //import home route
 const userRoute = require("./routes/user"); //import user route
@@ -12,6 +13,7 @@ const postsRoute = require("./routes/posts"); //import posts route
 app.use("/", homeRoute); //call on router in home.js
 app.use("/user", userRoute); //call on router in user.js
 app.use("/user/posts", postsRoute); //call on router in posts.js
+//use body parser to be able to interpret requests and translate them into JSON
 //
 //Connect to DB
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
