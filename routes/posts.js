@@ -25,5 +25,23 @@ router.post("/", async (req, res) => {
   }
 });
 //fetch specific post
+//dynamic routing to get specific post (:postID)
+router.get("/:postId", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+    res.json(post);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 
+//Delete Post
+router.delete("/:postId", async (req, res) => {
+  try {
+    const removePost = await Post.deleteOne({ _id: req.params.postId }); //have to add underscore for Mongo IDs
+    res.json(removePost);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 module.exports = router;
