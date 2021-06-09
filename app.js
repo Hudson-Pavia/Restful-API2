@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express(); //execute express, easy routes
 const port = 3000;
 require("dotenv/config"); //for the .env file that helps us keep the password out of the code
-app.use(express.json());
+app.use(express.json()); //to parse the bodies of requests into JSON
+app.use(cors()); //Allow other domains to make requests
 //Import Routes
 const homeRoute = require("./routes/home"); //import home route
 const userRoute = require("./routes/user"); //import user route

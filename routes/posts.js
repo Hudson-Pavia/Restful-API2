@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 //dynamic routing to get specific post (:postID)
 router.get("/:postId", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.postId);
+    const post = await Post.findById(req.params.postId); //built in collection method to find something by its id
     res.json(post);
   } catch (err) {
     res.json({ message: err });
@@ -42,6 +42,20 @@ router.delete("/:postId", async (req, res) => {
     res.json(removePost);
   } catch (err) {
     res.json({ message: err });
+  }
+});
+
+//Update a post
+router.patch("/:postID", async (req, res) => {
+  try {
+    const updated = await Post.updateOne(
+      { _id: req.params.postID }, //need to pass the id so we know which post to update
+      { $set: { title: req.body.title } } //use $set to specify what part of the post will be modified
+    );
+    res.json(updated); //send a response back to the client to indicate a successful update
+  } catch (err) {
+    //error check
+    res.json({ message: error });
   }
 });
 module.exports = router;
